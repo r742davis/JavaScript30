@@ -18,8 +18,7 @@
 
   <style>
     html {
-      background: #018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
-      background-size: cover;
+      background: #018eef;
       font-family: 'helvetica neue';
       text-align: center;
       font-size: 10px;
@@ -62,13 +61,33 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: 0.05;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.minute-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
+    function setDate() {
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const secondsDegrees = ((seconds/60)*360);
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`
+      console.log(seconds);
 
+      const minutes = now.getMinutes();
+      const minutesDegrees = ((minutes/60)*360);
+
+      console.log(minutes);
+    }
+
+    setInterval(setDate, 1000);
   </script>
 </body>
 </html>
