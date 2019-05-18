@@ -32,12 +32,12 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
-    //My solution
-    const result = inventors.filter(person => person.year >= 1500 && person.year < 1600)
-    console.table(result)
+    ////My solution
+    // const result = inventors.filter(person => person.year >= 1500 && person.year < 1600)
+    // console.table(result)
 
 
-    //Instructor Solution
+    ////Instructor Solution
     // const fifteen = inventors.filter(function(inventor) {
     //   if(inventor.year >= 1500 && inventor.year < 1600) {
     //     return true;
@@ -46,16 +46,49 @@
     //
     // console.table(fifteen);
 
-    const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
-    console.log(fifteen);
-
-
+    // const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+    // console.log(fifteen);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
 
+    ////My Solution
+    // const nameArr = inventors.map(inventor => `${inventor.first} ${inventor.last}`)
+    //
+    // console.log(nameArr);
+
+    ////Instructor Solution
+    // const fullNames = inventors.map(inventor => inventor.first + ' ' + inventor.last)
+    //
+    // console.log(fullNames);
+
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+
+    ////My Solution
+    // const sort = inventors.sort(function (a, b) {
+    //   return a.passed - a.year
+    // })
+    //
+    // console.log(sort);
+    //
+    //
+    // const ageSort = inventors.sort(inventor => inventor.year)
+    //
+    // console.log(ageSort);
+
+
+    ////Instructor Solution
+    const ordered = inventors.sort(function(first, second) {
+      if(first.year > second.year) {
+        return 1;
+      } else {
+        return -1;
+      }
+    })
+
+    console.table(ordered);
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
