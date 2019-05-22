@@ -33,13 +33,17 @@ function findMatches(wordToMatch, cities) {
 function displayMatches() {
   const matchArray = findMatches(this.value, cities);
   const html = matchArray.map(place => {
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
     return `
       <li>
-        <span class="name">${place.city}, ${place.state}</span>
+        <span class="name">${cityName}, ${stateName}</span>
         <span class="population">${place.population}</span>
       </li>
     `
   }).join('');
+  //Add the join because the .map function returns an array, so you need to join the array items so that there isn't a comma inbetween the map items
   suggestions.innerHTML = html;
 }
 
