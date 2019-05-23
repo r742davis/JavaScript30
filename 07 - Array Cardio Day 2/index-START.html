@@ -62,9 +62,21 @@
     const comment = comments.find(comment => comment.id === 823423);
     console.log(comment);
 
+    //Instructor Answer - It was the same! Yay!
+
+
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const index = comments.findIndex(comment => comment.id === 823423);
+    // comments.splice(index, 1);
+
+    const newComments = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ]
+    //You need to spread the new items into the array or you will get an array within an array - Spread operators hep reduce that second array from forming - This method is popular in Redux when creating a new array for the state instead of altering the original array/state.
+    console.table(newComments);
 
   </script>
 </body>
