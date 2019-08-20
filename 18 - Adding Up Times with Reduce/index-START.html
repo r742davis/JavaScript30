@@ -182,6 +182,34 @@
     </li>
   </ul>
 <script>
+
+  //Spread the nodes into an array, you can also use Array.from() to convert nodes into array
+  const timeNodes = [...document.querySelectorAll('[data-time]')];
+
+  const seconds = timeNodes
+    //First, you map each node's data-time value
+    .map(node => node.dataset.time)
+
+    //Second, you map the timeCode via array destructuring (you create two initial variables that now hold a then b values, so mins = a and secs = b)
+    //You split each timeCode value by ':' and map each value with parseFloat to change the string to a number
+    .map(timeCode => {
+      const [mins, secs] = timeCode.split(':').map(parseFloat);
+      return (mins * 60) + secs;
+    })
+
+    //Use .reduce() to sum up the whole array of seconds values, then be sure to return the value
+    .reduce((total, vidSeconds) => total + vidSeconds)
+
+  //Here, we break down the seconds into hours and minutes until we get a leftover seconds value which is appended to the total
+  let secondsLeft = seconds;
+  const hours = Math.floor(secondsLeft / 3600);
+  secondsLeft = secondsLeft % 3600;
+
+  const mins = Math.floor(secondsLeft / 60);
+  secondsLeft = secondsLeft % 60;
+
+  console.log(hours+" hours", mins+" mins", secondsLeft+" seconds")
+
 </script>
 </body>
 </html>
